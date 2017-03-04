@@ -1,0 +1,72 @@
+/* reset css */
+* { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+a { outline: 0; text-decoration: none; color:#888; }
+img { border: 0; }
+body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
+
+#Card {
+  width:         730px;
+  height:        450px;
+  background:    #FFF;
+  margin:        7% auto;
+  border-radius: 105px 10px 10px 10px;
+  box-shadow:    3px 3px 10px #AAA;
+}
+
+#AboutMe {
+  float:            left;
+  width:            220px;
+  height:           390px;
+  margin:           30px 30px;
+  color:            #777;
+  border-radius:    97px 30px 20px 20px;
+  background-color: white;
+
+  transition: background-color .2s ease-out,
+              box-shadow       .2s ease-out,
+              color            .2s ease-in;
+}
+
+#AboutMe:hover {
+  background: DarkSlateBlue;
+  color:      #FFF;
+  box-shadow: 0px 0px 8px #281D6B inset;
+}
+
+#AboutMe #Profile {
+  background-size: cover;
+  width:           150px;
+  height:          150px;
+  border-radius:   75px;
+  margin:          35px 0px 25px 35px;
+}
+
+#AboutMe #Information {
+  text-align: center;
+}
+
+#Category {
+  float:  left;
+  width:  450px;
+  height: 450px;
+}
+
+#Category ul li {
+  float:         left;
+  width:         118px;
+  height:        45px;
+  margin:        78px 0px 0px 71px;
+  background:    #BBB;
+  border-radius: 5px;
+
+  transition: background-color .1s ease-in,
+              box-shadow       .1s ease-in;
+}
+
+#Category ul li:hover {
+  background: ForestGreen;
+  color:      #FFF;
+  box-shadow: 0px 0px 8px #026B02 inset;
+}
+
