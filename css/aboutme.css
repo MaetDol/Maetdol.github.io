@@ -1,0 +1,21 @@
+/* reset css */
+* { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+a { outline: 0; text-decoration: none; color:#888; }
+img { border: 0; }
+body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
+
+.turnOver#Card {
+  transform: rotateY(0deg);
+}
+
+#Card {
+  width:         730px;
+  height:        450px;
+  background:    #FFF;
+  margin:        7% auto;
+  border-radius: 10px 105px 10px 10px;
+  box-shadow:    3px 3px 10px #AAA;
+  transform:     perspective(1000px) rotateY(90deg);
+  transition:    transform .4s ease-in;
+}
