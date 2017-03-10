@@ -9,13 +9,92 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
   transform: rotateY(0deg);
 }
 
+.arrow {
+  border: solid 10px rgba(0, 0, 0, 0);
+  background-clip: border-box;
+}
+
 #Card {
   width:         730px;
   height:        450px;
   background:    #FFF;
   margin:        7% auto;
+  padding:       30px;
   border-radius: 10px 105px 10px 10px;
   box-shadow:    3px 3px 10px #AAA;
   transform:     perspective(1000px) rotateY(90deg);
   transition:    transform .4s ease-in;
+}
+
+#Card p {
+  padding:     30px;
+  line-height: 130%;
+  width:       650px;
+}
+
+#Card #Contact {
+  position: absolute;
+  top:      430px;
+  left:     610px;
+}
+
+#Contact div {
+  float:       left;
+  margin-left: 20px;
+}
+
+#Contact .svg {
+  width:  40px;
+  height: 40px;
+} 
+
+#Contact .description {
+  white-space:   nowrap;
+  position:      absolute;
+  font-size:     80%;
+  background:    #666;
+  color:         #FFF;
+  padding:       5px;
+  border-radius: 3px;
+  opacity:       0;
+}
+
+#Contact #Email:hover {
+  cursor: pointer; 
+}
+
+#Contact #Email .arrow {
+  position:      absolute;
+  border-bottom: solid 10px #666;
+  top:           33px;
+  right:         68px;
+  margin:        0px;
+  opacity:       0;
+}
+
+#Contact #Email .description {
+  top:   53px;
+  right: 55px;
+}
+
+#Contact #Email .description.email {
+  font-size: 110%;
+}
+
+#Contact #Email .description.clickToCopy {
+  margin-top: 15px;
+  top: 61px;
+}
+
+#Contact #Github .arrow {
+  position:   absolute;
+  border-top: solid 10px #666;
+  top:        -13px;
+  right:      10px;
+  margin:     0px;
+  opacity:    0;
+}
+
+#Contact #Github .description {
+  top:           -39px;
 }
