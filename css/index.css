@@ -6,7 +6,7 @@ img { border: 0; }
 body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
 
 .turnOver {
-  transform: perspective(1000px) rotateY(-90deg);
+  transform: perspective(2000px) rotateY(-90deg);
 }
 
 #Card {

@@ -6,11 +6,11 @@ img { border: 0; }
 body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
 
 .turnOver#Card {
-  transform: rotateY(0deg);
+  transform: perspective(2000px) rotateY(0deg);
 }
 
 .arrow {
-  border: solid 10px rgba(0, 0, 0, 0);
+  border:          solid 10px rgba(0, 0, 0, 0);
   background-clip: border-box;
 }
 
@@ -22,7 +22,7 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
   padding:       30px;
   border-radius: 10px 105px 10px 10px;
   box-shadow:    3px 3px 10px #AAA;
-  transform:     perspective(1000px) rotateY(90deg);
+  transform:     perspective(2000px) rotateY(90deg);
   transition:    transform .4s ease-in;
 }
 
@@ -57,6 +57,7 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
   padding:       5px;
   border-radius: 3px;
   opacity:       0;
+  transition:    all .2 ease-in;
 }
 
 #Contact #Email:hover {
@@ -83,7 +84,31 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
 
 #Contact #Email .description.clickToCopy {
   margin-top: 15px;
-  top: 61px;
+  top:        61px;
+}
+
+div.copied {
+  border:          solid 10px rgba(0, 0, 0, 0);
+  background-clip: border-box;
+  position:        absolute;
+  border-top:      solid 10px lightcoral;
+  top:             -16px;
+  right:           70px;
+  margin:          0px;
+  opacity:         0;
+}
+
+span.copied {
+  white-space:   nowrap;
+  padding:       3px;
+  border-radius: 3px;
+  position:      absolute;
+  top:           -37px;
+  right:         60px;
+  font-size:     80%;
+  background:    lightcoral;
+  color:         white;
+  opacity:       0;
 }
 
 #Contact #Github .arrow {
@@ -96,5 +121,5 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
 }
 
 #Contact #Github .description {
-  top:           -39px;
+  top: -39px;
 }
