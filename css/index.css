@@ -57,22 +57,59 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
   height: 450px;
 }
 
-#Category ul li {
+#CategoryTitle {
+  cursor:     default;
+  text-align: center;
+  width:      125px;
+  padding:    10px 10px;
+  margin:     auto;
+  margin-top: 55px; /* Text position is 65px from the top */
+  font-size:  1.4em;
+}
+
+#Category ul li a {
+  box-sizing:    border-box;
   float:         left;
   width:         118px;
   height:        45px;
-  margin:        78px 0px 0px 71px;
+  margin:        48px 0px 0px 71px;
   background:    #BBB;
+  color:         #666;
   border-radius: 5px;
+  padding-top:   12px;
+  text-align:    center;
+  font-weight:   bold;
 
   transition: background-color .1s ease-in,
-              box-shadow       .1s ease-in;
+              box-shadow       .1s ease-in,
+              color            .1s ease-in;
 }
 
-#Category ul li:hover {
+#Category ul li a:hover {
   cursor:     pointer;
   background: ForestGreen;
   color:      #FFF;
   box-shadow: 0px 0px 8px #026B02 inset;
 }
 
+#Category .tooltip {
+  white-space:   nowrap;
+  padding:       3px;
+  border-radius: 3px;
+  position:      absolute;
+  font-size:     80%;
+  background:    lightcoral;
+  color:         white;
+  opacity:       0;
+}
+
+#Category .tooltipArrow {
+  border:          solid 10px rgba(0, 0, 0, 0);
+  background-clip: border-box;
+  position:        absolute;
+  border-top:      solid 10px lightcoral;
+  top:             -16px;
+  right:           70px;
+  margin:          0px;
+  opacity:         0;
+}
