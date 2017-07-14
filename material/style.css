@@ -1,0 +1,318 @@
+@charset "UTF-8";
+
+/* Reset */
+* {
+  margin:0; padding:0; border:0;
+  background:transparent; box-sizing:border-box;
+  transition:all .5s; line-height: 0;
+}
+html, body { width:100%; height:100%; }
+a { text-decoration:none; color:#000; }
+li { list-style:none; }
+span { display:inline-block;}
+
+
+
+.thumbnail {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  margin-right: 16px;
+  float: left;
+}
+
+
+
+
+/* Header */
+header {
+  width: 100%;
+  height: 48px;
+  position: relative;
+  background: #e0e0e0;
+  box-shadow: 0 2px 1px rgba(0,0,0,0.2);
+}
+header .banner a {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+header .banner span {
+  background: #bebebe;
+}
+header .banner a span { font-size: 2em;}
+header .banner .img {
+  margin: 0 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+/* Toggling Menu */
+header #toggle_menu { display: none; }
+header .label_menu,
+header .label_menu span {
+  cursor: pointer;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  float: right;
+}
+header .label_menu {
+  margin: 8px 16px;
+}
+header .label_menu span {
+  background: #FFF;
+  border-radius: 8px;
+}
+header #toggle_menu:checked + .label_menu span {
+  margin-top: 8px;
+  height: 8px;
+}
+
+
+
+/* Section */
+/* Main Article */
+section {
+  background: #F2F2F2;
+  padding: 24px 16px;
+  max-width: 504px;
+  margin: 0 auto;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+article.main .wrap::after {
+  content: "";
+  padding-bottom: 24px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  width: 90%;
+  display: block;
+  border-bottom: 2px solid #CCC;
+}
+article.main .wrap [class*=w] { background: #cacaca; }
+section article.main .wrap h1[class*=w] { background: #a9a9a9; }
+section article.main .time_stamp { width: 100%; margin-bottom: 48px; }
+section article.main p { margin-bottom: 8px; }
+/* img - Landscape */
+section article.main figure { overflow: hidden; }
+section article.main .landscape {
+  position: relative;
+  overflow: hidden;
+  max-width: 336px;
+  width: 90%;
+  height: 168px;
+  margin: 16px auto 8px auto;
+  background: #FFF;
+  border-radius: 4px;
+  border: 8px solid #FFF;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+/* Draw Landscape */
+article.main .landscape .sun{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgb(240, 47, 34);
+  position: absolute;
+  top: 16px;
+  left: 24px;
+}
+article.main .landscape .mountain {
+  position: absolute;
+  transform: rotate(45deg);
+}
+article.main .landscape .mountain.front {
+  width: 128px;
+  height: 128px;
+  bottom: -54px;
+  left: 72px;
+  background: #2ab90e;
+  border-radius: 16px;
+  z-index: 1;
+}
+article.main .landscape .mountain.back {
+  width: 96px;
+  height: 96px;
+  background: #61c987;
+  border-radius: 12px;
+  right: 72px;
+  bottom: -40px;
+}
+/* Landscape caption */
+section article.main .landscape + figcaption { margin-bottom: 24px; }
+section article.main .landscape + figcaption .caption { text-align: center; }
+/* End landscape, Begin h2 & ul */
+section article.main ul li {
+  margin-bottom: 8px;
+}
+section article.main ul li::before {
+  background: #e0e0e0;
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 16px 4px 16px;
+}
+/* Profile of author */
+section article.main .author_profile {
+  overflow: hidden;
+  margin-top: 48px;
+}
+section article.main .author_profile .description {
+  width: calc(100% - 80px);
+  float: right;
+}
+section article.main .author_profile .name {
+  background: #bebebe;
+}
+
+/* Replies */
+section .replies .profile {
+  width: 100%;
+  overflow: hidden;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+section .replies .profile .thumbnail {
+  background: #bebebe;
+  margin: 16px;
+}
+section .replies .profile .text_box {
+  width: calc(100% - 96px);
+  margin-top: 16px;
+  float: right;
+}
+section .replies .profile .text_box .speach_bubble [class*=w] {
+  background: #bebebe;
+}
+section .replies .profile .name[class*=w],
+section .replies .profile .name [class*=w] {
+  background: #9e9e9e;
+}
+/* Re-replies */
+section .replies .re_reply {
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 2px solid #CCC;
+}
+
+
+
+/* Aside */
+/* Recommend article cards*/
+aside.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+  background: #F2F2F2;
+  padding: 24px 16px;
+  max-width: 504px;
+  margin: 24px auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+aside.cards .recommend {
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  background: #FFF;
+  width: 100%;
+  max-width: 224px;
+  padding: 8px;
+  margin-bottom: 16px;
+  transition: box-shadow .2s;
+}
+/* Able can click card */
+aside.cards .recommend a {
+  position: absolute;
+  top:0; bottom:0;
+  left:0; right:0;
+  z-index: 2;
+}
+aside.cards .recommend:hover {
+  box-shadow: 0 2px 8px 3px rgba(0,0,0,0.3);
+}
+/* Black cover at image */
+aside.cards .recommend a:hover ~ .preview .img::before {
+  content: "";
+  position: absolute;
+  top:0; bottom:0;
+  left:0; right:0;
+  background: linear-gradient(transparent,rgba(0,0,0,0.15));
+  z-index: 1;
+}
+aside.cards .recommend .preview .img {
+  overflow: hidden;
+  position: relative;
+  height: 204px;
+  margin-bottom: 8px;
+}
+aside.cards .recommend .preview .img .title[class*=w],
+aside.cards .recommend .preview .img .title [class*=w] {
+  background: #ededed;
+}
+aside.cards .recommend .preview .img .title {
+  position: absolute;
+  margin-left: 8px;
+  bottom: 0;
+  z-index: 1;
+}
+aside.cards .recommend .preview .img img {
+  /* Vertical align to middle */
+  position: relative;
+  top:50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  width: 100%;
+}
+.recommend .preview .text [class*=w] {
+  background: #cacaca;
+}
+
+
+
+/* Footer */
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  clear: both;
+}
+footer .caption [class*=w] { background: #e0e0e0; }
+footer .caption .copy { font-size: 14px; background: none;}
+
+
+
+
+
+@media screen and (min-width: 500px) {
+  /* Aside - Insert margin */
+  aside.cards {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Disappear Menu toggle button */
+  header .label_menu { display: none; }
+
+  /* Make float section & aside */
+  aside.cards {
+    margin-top: -8px;
+    width: 256px;
+    align-content: flex-start;
+    margin: 0;
+  }
+  section {
+    margin: 0 48px;
+  }
+  .desktop_view {
+    display: flex;
+    overflow: visible;
+    justify-content: left;
+  }
+}
