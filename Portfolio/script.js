@@ -60,7 +60,7 @@ $(document).ready( function () {
             o.view.css({ 'transition-duration': '.2s' });
             o.direction = '';
             if( Math.abs(dragDistance) > o.width*0.3 ) {
-                console.log(dragDistance)
+        
                 o.direction = 'left';
                 if( dragDistance > 0 ) {
                     o.direction = 'right';
@@ -90,7 +90,7 @@ function setFocus(o, offset) {
     }
     margin = parseInt( o.list.eq(0).css('margin-right') );
     offset += o.idx * (o.width + margin);
-    console.log(margin)
+  
     $('.focus').removeClass('focus');
     o.view.css({ left: 'calc(50% - ' + offset + 'px)' })
     o.list.eq(o.idx).addClass('focus');
