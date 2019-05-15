@@ -1,9 +1,9 @@
 /* reset css */
 * { margin: 0; padding: 0; }
 ol, ul { list-style: none; }
-a { outline: 0; text-decoration: none; color:#888; }
+a { outline: 0; text-decoration: none; color:#555; }
 img { border: 0; }
-body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
+body { font: 16px/1em 'font/Youth.ttf'; color:#555; background: #eee; }
 
 .turnOver {
   transform: perspective(2000px) rotateY(-90deg);
@@ -13,9 +13,10 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
   width:         730px;
   height:        450px;
   background:    #FFF;
-  margin:        7% auto;
+  margin:        10% auto;
   border-radius: 105px 10px 10px 10px;
-  box-shadow:    3px 3px 10px #AAA;
+  box-shadow:    3px 3px 5px hsla(0, 0%, 65%, 0.25);
+  position:      relative;
   transition:    transform .4s ease-out;
 }
 
@@ -24,7 +25,6 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
   width:         220px;
   height:        390px;
   margin:        30px 30px;
-  color:         #777;
   box-sizing:    border-box;
   border-radius: 97px 30px 20px 20px;
   background:    white;
@@ -34,8 +34,8 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
 #AboutMe:hover {
   cursor:      pointer;
   padding-top: 4px;
-  background:  #EEE;
-  box-shadow:  0px 0px 8px #DDD inset;
+  background:  hsla(230, 14%, 92%, 1);
+  box-shadow:  0px 2px 5px hsla(0, 0%, 0%, 0.1) inset;
 }
 
 #AboutMe #Profile {
@@ -45,49 +45,31 @@ body { font: 16px/1em 'font/Youth.ttf'; color:#666; background: #DDD; }
   height:        150px;
   margin:        35px 0px 25px 35px;
 }
-
 #AboutMe #Information {
   text-align: center;
 }
-
+#AboutMe #Information li {
+  margin-top: 24px;
+}
 #Category {
   float:  left;
-  width:  450px;
-  height: 450px;
+  margin: 80px 48px;
 }
-
-#CategoryTitle {
-  cursor:     default;
-  text-align: center;
-  width:      125px;
-  padding:    10px 10px;
-  margin:     auto;
-  margin-top: 55px; /* Text position is 65px from the top */
-  font-size:  1.4em;
-}
-
 #Category ul li a {
-  box-sizing:    border-box;
-  float:         left;
-  width:         118px;
-  height:        45px;
-  margin:        48px 0px 0px 71px;
-  background:    #FFF;
-  color:         #666;
-  border-radius: 5px;
-  padding-top:   12px;
-  text-align:    center;
-  font-weight:   bold;
-
-  transition: background-color .1s ease-in,
-              box-shadow       .1s ease-in,
-              color            .1s ease-in;
+  padding: 8px;
+  display: block;
+  transition: background .1s ease-out;
 }
-
 #Category ul li a:hover {
-  cursor:     pointer;
-  background: #EEE;
-  box-shadow: 0px 0px 8px #DDD inset;
+  background: hsla(230, 14%, 92%, 1);
+}
+#Category ul li {
+  display: inline-block;
+}
+#Category ul li img {
+  width: 48px;
+  display: block;
+  margin: auto;
 }
 
 footer {
@@ -95,7 +77,23 @@ footer {
   margin:     auto;
   width:      730px;
 }
-
 footer .Copyright {
-  font-size:       0.8em;
+  font-size:  0.8em;
+}
+footer .cc {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+footer .cc img {
+  width: 24px;
+}
+footer .cc span {
+  line-height: 23px;
+  padding-left: 8px;
+  font-size: 0.8em;
+}
+footer .cc span a {
+  text-decoration: underline;
 }
