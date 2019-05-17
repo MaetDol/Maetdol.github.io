@@ -1,7 +1,7 @@
 $(document).ready( function () {
 
     // 리스트 좌 우로 넘기기
-    o = {
+    let o = {
         idx: 0,
         list: $('.preview').parent(),
         view: $('main > ul'),
@@ -9,13 +9,13 @@ $(document).ready( function () {
         direction: ''
     };
     o.width = o.list.eq(0).width();
-    r = RegExp("Arrow*");
+    let r = RegExp("Arrow*"),
     // cooldown
-    up = true;
-    down = true;
+        up = true,
+        down = true,
     // drag
-    startPoint = 0;
-    dragDistance = 0;
+        startPoint = 0,
+        dragDistance = 0;
     $('body').bind({
         keydown:
         function (e) {
@@ -51,7 +51,7 @@ $(document).ready( function () {
         },
         touchmove:
         function (e) {
-            pointX = e.originalEvent.touches[0].screenX;
+            let pointX = e.originalEvent.touches[0].screenX;
             dragDistance = startPoint - pointX;
             setFocus(o, dragDistance);
         },
@@ -60,7 +60,7 @@ $(document).ready( function () {
             o.view.css({ 'transition-duration': '.2s' });
             o.direction = '';
             if( Math.abs(dragDistance) > o.width*0.3 ) {
-        
+
                 o.direction = 'left';
                 if( dragDistance > 0 ) {
                     o.direction = 'right';
@@ -88,9 +88,9 @@ function setFocus(o, offset) {
     if( !$.isNumeric(offset) ) {
         offset = 0;
     }
-    margin = parseInt( o.list.eq(0).css('margin-right') );
+    let margin = parseInt( o.list.eq(0).css('margin-right') );
     offset += o.idx * (o.width + margin);
-  
+
     $('.focus').removeClass('focus');
     o.view.css({ left: 'calc(50% - ' + offset + 'px)' })
     o.list.eq(o.idx).addClass('focus');

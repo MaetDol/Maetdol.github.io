@@ -1,0 +1,292 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal; font-style: normal;
+    unicode-range: U+0030-0039;
+}
+
+/* reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body, html { width: 100%; height: 100%; }
+div { display: inline-block; }
+i, h1, h2, h3, h4, h5, h6, p, a, span, li, label { font-family: source-han-sans-korean, sans-serif;
+    text-decoration: none; color: #555; display: inline-block; font-size: 16px; }
+ul, ol, li { list-style:none; }
+button, input { background: none; border: none; }
+
+/* 12 size grid */
+.row { display: block; width: 100%; font-size: 0px; clear: both; padding: 16px; }
+.col-1 { width: 8.3%; }
+.col-2 { width: 16.6%; }
+.col-3 { width: 25%; }
+.col-4 { width: 33.3%; }
+.col-5 { width: 41.6%; }
+.col-6 { width: 50%; }
+.col-7 { width: 58.3% ; }
+.col-8 { width: 66.6%; }
+.col-9 { width: 75%; }
+.col-10 { width: 83.3%; }
+.col-11 { width: 91.6%; }
+.col-12 { width: 100%; }
+
+.hidden { display: none !important; }
+
+.dark-bg { background-color: rgb(53, 105, 158); }
+.light-bg { background: rgb(247, 249, 252); }
+
+.dark-border { border-color: rgb(53, 105, 158) !important; }
+.dark-color { color: rgb(53, 105, 158); }
+.light-color { color: rgb(247, 249, 252); }
+
+.light-red { background: #FF969E; }
+.light-brown { background: #E29761; }
+.light-yellow { background: #FFDC65; }
+.light-green { background: #C8E870; }
+.light-cyan { background: #AAE4B9; }
+
+.container .calendar .schedule span.color1 { background: #E29761; }
+.container .calendar .schedule span.color2 { background: #FFDC65; }
+.container .calendar .schedule span.color3 { background: #C8E870; }
+.container .calendar .schedule span.color4 { background: #AAE4B9; }
+
+header, .container, footer { min-width: 1200px; }
+
+
+
+/* Header */
+header {
+    z-index: 3;
+    width: 100%;
+    position: relative;
+}
+header .logo {
+    line-height: 96px;
+    width: 100%;
+    background: white;
+    text-align: center;
+}
+header .logo a {
+    font-size: 24px;
+}
+header .separate {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: right;
+    border-left: 2px solid;
+    height: 48px;
+}
+header nav {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+header nav .top {
+    z-index: 0;
+    height: 100%;
+    width: 816px;
+    margin: auto;
+}
+header nav .top > li {
+    float: left;
+    height: 100%;
+    min-width: 136px;
+    line-height: 80px;
+    text-align: center;
+}
+header nav li,
+header nav li a {
+    display: block;
+    height: 100%;
+}
+header nav li a {
+    transition: background-color .1s ease-in-out;
+}
+header nav li a:hover {
+    background: #35699e;
+    color: white;
+}
+header nav .top .review.hover .sub,
+header nav .top .curriculum.hover .sub,
+header nav .top .consult.hover .sub,
+header nav .top .review.click .sub,
+header nav .top .curriculum.click .sub,
+header nav .top .consult.click .sub {
+    top: 80px;
+}
+header nav .sub {
+    background: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: -150%;
+    border-bottom: 2px solid;
+    z-index: -1;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    transition: top .2s ease-in-out;
+}
+header nav .sub li {
+    text-align: center;
+    line-height: 48px;
+    width: 136px;
+}
+header nav .curriculum {
+    position: relative;
+}
+header nav .curriculum .sub {
+    right: -136px;
+    width: 400%;
+}
+header nav .curriculum .sub > li {
+    float: left;
+}
+header nav .curriculum .sub span {
+    line-height: 24px;
+    font-size: 0.85em;
+    width: 80%;
+    color: #555;
+    border: 1px solid #AAA;
+}
+
+
+
+/* container */
+.container {
+    display: block;
+    width: 1200px;
+    margin: auto;
+    font-size: 0px;
+    padding-bottom: 80px;
+    min-height: calc( 100% - 186px - 160px );
+}
+.container .current-page * {
+    font-size: 14px;
+    color: #777;
+}
+.container .current-page .gt {
+    margin: 0 8px;
+}
+
+
+
+/* footer */
+footer {
+    width: 100%;
+    height: 160px;
+    position: relative;
+    padding-left: 320px;
+    padding-top: 32px;
+}
+footer .logo {
+    position: absolute;
+    font-size: 2.0em;
+    left: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+footer p {
+    display: block;
+}
+footer p,
+footer a {
+    font-size: 12px;
+    color: #c0cee0;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+@media( max-width: 900px ) {
+
+    header, .container, footer { width: 100%; min-width: 100%; }
+
+    header {
+        line-height: 0;
+    }
+    header .logo {
+        line-height: 48px;
+        padding-top: 8px;
+    }
+    header .logo a {
+        font-size: 2em;
+    }
+    header nav::before {
+        content: '';
+        width: 100%;
+        border-bottom: 1px solid #CCC;
+        position: absolute;
+        top: 50%;
+    }
+    header nav .top {
+        width: 100%;
+    }
+    header nav .top > li {
+        line-height: 56px;
+        min-width: 33.33%;
+    }
+    header nav .top .sub {
+        width: 100%;
+        top: -2px;
+        left: 0;
+        padding: 8px 0;
+        transition: top .2s ease-in-out;
+    }
+    header nav .top .sub > li,
+    header nav .top .sub ul li {
+        line-height: 32px;
+    }
+    header nav .top .review.hover .sub,
+    header nav .top .curriculum.hover .sub,
+    header nav .top .consult.hover .sub,
+    header nav .top .review.click .sub,
+    header nav .top .curriculum.click .sub,
+    header nav .top .consult.click .sub {
+        top: 110px;
+    }
+    header nav .top .sub span {
+        margin-top: 16px;
+    }
+    header nav .curriculum {
+        position: static;
+    }
+    header nav .curriculum .sub {
+        top: -270px;
+        padding-bottom: 24px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+    header nav .review .sub li,
+    header nav .consult .sub li {
+        width: 70%;
+        margin: auto;
+        line-height: 48px;
+    }
+
+    .container {
+        min-height: calc( 100% - 177px - 166px );
+        min-width: initial;
+        max-width: 504px;
+        width: 100%;
+        padding: 0;
+    }
+
+
+    footer {
+        padding: 8px 16px;
+        height: auto;
+        text-align: left;
+    }
+    footer .logo {
+        position: relative;
+        left: initial;
+        top: initial;
+        transform: none;
+        font-size: 24px;
+    }
+
+}

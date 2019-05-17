@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+
+#qna {
+    padding: 16px;
+}
+#qna section {
+    position: relative;
+}
+#qna h1 {
+    border-bottom: 1px solid rgb(53, 105, 158);
+    font-size: 20px;
+    display: block;
+    padding-bottom: 8px;
+}
+#qna .search {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#qna .search input {
+    border: 1px solid #cacdd2;
+    padding: 4px;
+    width: 120px;
+    height: 26px;
+    float: left;
+}
+#qna .search button {
+    padding: 4px;
+    height: 26px;
+    color: white;
+    cursor: pointer;
+}
+#qna ul {
+    padding-top: 16px;
+}
+#qna ul h2 {
+    font-weight: normal;
+    display: block;
+    font-size: 20px;
+    background: white;
+}
+#qna ul h2::before {
+    content: 'Q. ';
+    font-weight: bold;
+    position: relative;
+    bottom: 2px;
+}
+#qna ul li {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+#qna ul li > a {
+    display: block;
+}
+#qna ul li .answer {
+    padding: 8px;
+    display: block;
+    transition: .2s ease-in-out;
+    transition-property: height, padding;
+    overflow: hidden;
+}
+#qna .answer.collapse {
+    height: 0 !important;
+    padding: 0 8px !important;
+}
+#qna ul li p {
+    display: block;
+    font-size: 14px;
+}
+#qna .bottom {
+    width: 100%;
+    margin-top: 24px;
+    position: relative;
+}
+#qna .page {
+    position: absolute;
+    left: 50%;
+    top: 22px;
+    transform: translate(-50%, -50%);
+    width: 176px;
+    display: flex;
+    justify-content: space-between;
+}
+#qna .page a {
+    padding: 0 8px;
+    color: #555;
+}
+#qna .page a i {
+    color: #555;
+}
+#qna .page a:not(.dark-bg):hover {
+    background: #cacdd2;
+}
+#qna .page .dark-bg {
+    color: white;
+}
+#qna .bottom .open {
+    width: 120px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 40px;
+    border: 2px solid;
+}
+.question-modal {
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.question-modal form {
+    width: 480px;
+    height: 440px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+}
+.question-modal [name="title"] {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 16px;
+}
+.question-modal [name="contents"] {
+    display: block;
+    width: 100%;
+    height: 70%;
+    padding: 16px;
+    border-width: 1px 0px;
+}
+.question-modal [name="email"] {
+    width: 100%;
+    height: auto;
+    padding: 8px;
+}
+.question-modal form button {
+    position: absolute;
+    bottom: 16px;
+    color: white;
+    line-height: 32px;
+    width: 80px;
+}
+.question-modal [type="submit"] {
+    right: 120px;
+    background: rgb(123, 195, 97);
+}
+.question-modal .cancel {
+    right: 16px;
+    background: #a9acb1;
+}
+.question-modal .bg {
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media( max-width: 900px ) {
+
+    #qna .bottom .open {
+        top: 64px;
+        left: 50%;
+        position: relative;
+        transform: translateX(-50%);
+    }
+    .question-modal form {
+        width: 100%;
+        max-width: 480px;
+    }
+}

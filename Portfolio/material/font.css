@@ -1,0 +1,78 @@
+:root, html { font-size: 8px; }
+
+.w1, .w2, .w3, .w4, .w5,
+.w6, .w7, .w8, .w9, .w10 {
+  margin-right: 8px;
+  height: 8px;
+  background: #000000;
+}
+
+.w1  { width: 1em; }
+.w2  { width: 2em; }
+.w3  { width: 3em; }
+.w4  { width: 4em; }
+.w5  { width: 5em; }
+.w6  { width: 6em; }
+.w7  { width: 7em; }
+.w8  { width: 8em; }
+.w9  { width: 9em; }
+.w10 { width: 10em; }
+
+h1[class*=w] {
+  font-size: 4rem;
+  height: 1em;
+  margin-right: 1em;
+}
+h2[class*=w],
+h2 span[class*=w] {
+  font-size: 3rem;
+  height: 1em;
+}
+span[class*=w],
+p[class*=w], p {
+  font-size: 2rem;
+  height: 1em;
+  margin-right: 1em;
+}
+.br { margin-bottom: 2rem; }
+p, h1, h2 { margin-bottom: 1rem; }
+.caption,
+.caption *[class*=w] {
+  font-size: 1rem;
+  height: 1em;
+  margin-right: 1em;
+}
+
+/* Link effect( Not working :P ) */
+.link, .link [class*=w] {
+  transition: background .13s !important;
+}
+.link {
+  border-bottom: 2px solid #2b7ce0;
+  cursor: pointer;
+}
+/* Remove margin at last child */
+.link [class*=w]:last-of-type {
+  margin-right: 0;
+}
+.link:hover,
+.link:hover [class*=w] {
+  background: #5094dc !important;
+}
+
+@media screen and (max-width: 360px) {
+  :root, html { font-size: 4px; }
+}
+
+@media screen and (min-width: 478px) {
+  .w1:not([class*="dis_grow"])  { width: 2em;  }
+  .w2:not([class*="dis_grow"])  { width: 4em;  }
+  .w3:not([class*="dis_grow"])  { width: 6em;  }
+  .w4:not([class*="dis_grow"])  { width: 8em;  }
+  .w5:not([class*="dis_grow"])  { width: 10em; }
+  .w6:not([class*="dis_grow"])  { width: 12em; }
+  .w7:not([class*="dis_grow"])  { width: 14em; }
+  .w8:not([class*="dis_grow"])  { width: 16em; }
+  .w9:not([class*="dis_grow"])  { width: 18em; }
+  .w10:not([class*="dis_grow"]) { width: 20em; }
+}
