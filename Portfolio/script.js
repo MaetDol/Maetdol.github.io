@@ -6,9 +6,11 @@ $(document).ready( function () {
         list: $('.preview').parent(),
         view: $('main > ul'),
         len: $('.preview').length,
-        direction: ''
+        direction: '',
+        getWidth: function() {
+            return this.list.eq(0).width();
+        }
     };
-    o.width = o.list.eq(0).width();
     let r = RegExp("Arrow*"),
     // cooldown
         up = true,
@@ -59,7 +61,7 @@ $(document).ready( function () {
         function () {
             o.view.css({ 'transition-duration': '.2s' });
             o.direction = '';
-            if( Math.abs(dragDistance) > o.width*0.3 ) {
+            if( Math.abs(dragDistance) > o.getWidth()*0.3 ) {
 
                 o.direction = 'left';
                 if( dragDistance > 0 ) {
@@ -89,7 +91,7 @@ function setFocus(o, offset) {
         offset = 0;
     }
     let margin = parseInt( o.list.eq(0).css('margin-right') );
-    offset += o.idx * (o.width + margin);
+    offset += o.idx * (o.getWidth() + margin);
 
     $('.focus').removeClass('focus');
     o.view.css({ left: 'calc(50% - ' + offset + 'px)' })

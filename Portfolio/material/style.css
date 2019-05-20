@@ -78,6 +78,11 @@ header.banner #toggle_menu:checked + .label_menu span {
 
 /* Section */
 /* Main Article */
+.desktop_view {
+    width: 848px;
+    margin: auto;
+    max-width: 100%;
+}
 section {
   background: #F2F2F2;
   padding: 40px 24px;

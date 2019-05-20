@@ -140,7 +140,6 @@ $(function() {
     }
 
 
-
     // 창 크기변경에 따른 배너사이즈 변경
     $(window).resize(function () {
 
@@ -149,7 +148,7 @@ $(function() {
         } else {
             setSliderWidth( slideObj );
         }
-    });
+    })();
 
 
 });
