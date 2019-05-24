@@ -3,27 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <title>명함</title>
+  <title>Kangmin-Lee</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="css/index.css">
-  <link rel="icon" href="" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
   <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 
+
   <div id="Card">
     <section id="AboutMe">
-      <figure><img id="Profile" src="img/profile.jpg"></figure>
+      <img id="Profile" src="img/frontend.png">
 
-      <ul id="Information">
-        <li>이강민</li>
-        <li>rndka98@naver.com</li>
-        <li>주 포지션은 프론트엔드.<br>백엔드 또한 가능합니다.</li>
-      </ul>
+      <div id="Information">
+        <div class="wrapper">
+          <p class="bold">이강민</p>
+          <p>프론트엔드 개발자</p>
+          <p class="light-text">rndka98@naver.com</p>
+        </div>
+      </div>
     </section>
 
     <nav id="Category">
+      <h1 class="light-text">Sites</h1>
       <ul>
         <li>
           <a href="Portfolio/index.html">
@@ -37,15 +44,36 @@
             <span>(임시) 모바일</span>
           </a>
         </li>
+        <li>
+          <a href="https://github.com/maetdol">
+            <img class="svg" src="img/github.svg" alt="Github icon">
+            <span>Github</span>
+          </a>
+        </li>
       </ul>
     </nav>
+
+    <div id="Background-text">
+      <div class="top">
+        <p>&lt;!DOCTYPE html&gt;</p>
+        <p>&lt;<span class="light-red">html</span>&gt;</p>
+        <p>&lt;<span class="light-red">head</span>&gt;</p>
+        <p class="tab">&lt;<span class="light-red">meta</span> <span class="light-orange">charset=</span></p>
+      </div>
+
+      <div class="bottom">
+        <p class="tab">&lt;/<span class="light-red">footer</span>&gt;</p>
+        <p>&lt;/<span class="light-red">body</span>&gt;</p>
+      </div>
+    </div>
   </div>
+
 
   <footer>
     <span class="Copyright">Copyright 2019 Kangmin, All Rights Reserved.</span>
     <div class="cc">
       <img src="img/browser.svg" alt="Browser image">
-      <span>Icon created by <a href="https://thenounproject.com/KimmiStudio/">Kimmi Studio</a> from the Noun Project</span>
+      <span>Icon created by <a href="https://thenounproject.com/KimmiStudio/">Kimmi Studio</a> from the <a href="https://thenounproject.com/">Noun Project</a></span>
     </div>
   </footer>
 
