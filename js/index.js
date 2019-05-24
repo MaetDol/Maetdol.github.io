@@ -6,8 +6,10 @@ window.onpageshow = function (e) {
   if (e.persisted)
     $('#Card').removeClass('turnOver');
 
+  $('#Card').removeClass('to-right');
+
   $("#AboutMe").on ("click", function () {
-    $("#Card").addClass ('turnOver').delay (400).queue (function () {
+    $("#Card").addClass ('turnOver').delay (300).queue (function () {
       location.href = 'AboutMe.html';
     });
   });

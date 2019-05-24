@@ -30,12 +30,18 @@ body { font: 18px/1em "Roboto", "Noto Sans KR"; color:#666; background: #eee; }
   width:         730px;
   height:        450px;
   background:    #FFF;
-  margin:        10% auto;
+  margin:        10% auto 120px;
   border-radius: 105px 10px 10px 10px;
   box-shadow:    3px 3px 5px hsla(0, 0%, 65%, 0.25);
-  position:      relative;
+  position: relative;
   overflow: hidden;
-  transition:    transform .4s ease-out;
+  right: 0;
+  transition: transform, left, right;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+}
+#Card.to-right {
+  right: calc(100vw + 365px);
 }
 #AboutMe {
   float:         left;
@@ -141,8 +147,8 @@ body { font: 18px/1em "Roboto", "Noto Sans KR"; color:#666; background: #eee; }
 
 footer {
   text-align: center;
-  margin:     auto;
-  width:      730px;
+  margin: 0 auto;
+  width: 730px;
   color: #999;
 }
 footer .Copyright {

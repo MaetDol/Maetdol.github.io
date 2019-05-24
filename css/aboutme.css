@@ -2,113 +2,50 @@
   transform: perspective(2000px) rotateY(0deg);
 }
 
-.tooltipArrow {
-  border:          solid 10px rgba(0, 0, 0, 0);
-  background-clip: border-box;
-}
-
 #Card {
   border-radius: 10px 105px 10px 10px;
-  transform:     perspective(2000px) rotateY(90deg);
-  transition:    transform .4s ease-in;
+  transform: perspective(2000px) rotateY(90deg);
+  left: 0;
+}
+#Card.to-left {
+  left: calc(-100vw - 365px);
+}
+#Card > p {
+  display: block;
+  margin: 184px auto;
+  text-align: center;
 }
 
-#Card p {
-  padding:     30px;
-  line-height: 130%;
-  width:       650px;
-}
-
-#Card #Contact {
+.previous {
+  text-align: center;
+  margin-top: calc(10% + 450px - 10px);
   position: absolute;
-  bottom: 24px;
-  right: 24px;
-  width: initial;
+  left: calc(50% - 365px);
+  top: -122px;
+  display: none;
+  transition: top .2s ease-out;
 }
-
-#Contact div {
-  float:       left;
-  margin-left: 20px;
+.previous.show {
+  display: inline-block;
 }
-
-#Contact .svg {
-  width:  40px;
-  height: 40px;
+.previous.show.slid-down {
+  top: 0;
 }
-
-#Contact .tooltipBubble {
-  white-space:   nowrap;
-  position:      absolute;
-  font-size:     80%;
-  background:    #666;
-  color:         #FFF;
-  padding:       5px;
-  border-radius: 3px;
-  opacity:       0;
-  transition:    all .2 ease-in;
+.previous a {
+  display: block;
 }
-
-#Contact #Email:hover {
-  cursor: pointer;
+.previous a img {
+  margin-bottom: 8px;
+  background: #b4b2bb;
+  border-radius: 8px;
+  opacity: 0.6;
+  display: block;
+  transition: opacity .1s ease-out;
 }
-
-#Contact #Email .tooltipArrow {
-  position:      absolute;
-  border-bottom: solid 10px #666;
-  top:           33px;
-  right:         68px;
-  margin:        0px;
-  opacity:       0;
+.previous:hover a img {
+  opacity: 0.8;
 }
-
-#Contact #Email .tooltipBubble {
-  top:   53px;
-  right: 55px;
-}
-
-#Contact #Email .tooltipBubble.email {
-  font-size: 110%;
-}
-
-#Contact #Email .tooltipBubble.copyEmail {
-  margin-top: 15px;
-  top:        61px;
-}
-
-div.copied {
-  border:          solid 10px rgba(0, 0, 0, 0);
-  background-clip: border-box;
-  position:        absolute;
-  border-top:      solid 10px lightcoral;
-  top:             -16px;
-  right:           70px;
-  margin:          0px;
-  opacity:         0;
-}
-
-span.copied {
-  white-space:   nowrap;
-  padding:       3px;
-  border-radius: 3px;
-  position:      absolute;
-  top:           -37px;
-  right:         60px;
-  font-size:     80%;
-  background:    lightcoral;
-  color:         white;
-  opacity:       0;
-}
-
-#Contact #Github .tooltipArrow {
-  position:   absolute;
-  border-top: solid 10px #666;
-  top:        -13px;
-  right:      10px;
-  margin:     0px;
-  opacity:    0;
-}
-
-#Contact #Github .tooltipBubble {
-  top: -39px;
-  right: 0;
+.previous a span {
+  color: #888;
+  font-size: 16px;
 }

@@ -1,47 +1,44 @@
-function appear (ele) {
-  ele.stop ().show ().fadeTo (200, 1);
-}
+$(document).ready( function () {
 
-function disappear (ele) {
-  ele.stop ().fadeTo (150, 0).hide();
-}
+  $("#Card").addClass('turnOver');
 
-$(document).ready (function () {
-  $("#Card").addClass ('turnOver');
+  $('.previous').click( function() {
+    $(this).removeClass('slid-down').delay(100).queue(function() {
+      $(this).removeClass('show')
+    });
+    $('#Card').addClass('to-left').delay(200).queue(
+      function() {
+        location.href = $('.previous a').attr('href')
+    });
 
-  $("#Email .svg").hover (function () {
-    appear ($(this).siblings (".tooltipBubble"));
-    appear ($(this).siblings (".tooltipArrow"));
-  }, function () {
-    disappear ($(this).siblings (".tooltipBubble"));
-    disappear ($(this).siblings (".tooltipArrow"));
+    return false;
   });
 
-  $("#Github .svg").hover (function () {
-    appear ($(this).parents ().siblings (".tooltipBubble"));
-    appear ($(this).parents ().siblings (".tooltipArrow"));
-  }, function () {
-    disappear ($(this).parents ().siblings (".tooltipBubble"));
-    disappear ($(this).parents ().siblings (".tooltipArrow"));
-  });
+  setTimeout( function() {
+    $(".previous").addClass('show slid-down');
+  }, 200);
 
-  $('#Email .svg').on ('click', function (e) {
-    $('.copied').remove ();
+  s = 0;
+  (function t() {
+    $('.previous').css('top')
+    s = setTimeout( t, 100)
+  })();
+  setTimeout( function() {
+    clearTimeout(s);
+  }, 200);
 
-    var content = $(this).next ();
-    var range   = document.createRange ();
-    range.selectNode (content[0]);
-    window.getSelection ().addRange (range);
-
-    var successful = document.execCommand ('copy');
-
-    $('.tooltipBubble.copyEmail').after (
-      '<span class="copied">복사완료!</span>',
-      '<div  class="copied"></div>');
-    $('.copied').fadeTo (200, 1).delay (1000).fadeTo (200, 0).queue (
-      function () { $(this).remove(); });
-
-    window.getSelection ().removeAllRanges ();
-  });
 
 });
+
+
+function bounce( elem, delay ) {
+  if( isNaN( parseFloat(delay) ) )
+    delay = 0;
+
+  pos = $(elem).css('position');
+  if( pos != 'absolute' && pos != 'relative' )
+    pos = 'relative';
+
+
+  $(elem).css({ position: pos })
+}
