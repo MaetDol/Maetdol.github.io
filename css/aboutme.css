@@ -3,6 +3,7 @@
 }
 
 #Card {
+  background: white;
   border-radius: 10px 105px 10px 10px;
   transform: perspective(2000px) rotateY(90deg);
   left: 0;

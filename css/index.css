@@ -5,11 +5,6 @@ a { outline: 0; text-decoration: none; color:#666; }
 img { border: 0; }
 body { font: 18px/1em "Roboto", "Noto Sans KR"; color:#666; background: #eee; }
 
-@font-face {
-  font-family: "D2Coding";
-  src: url("../fonts/D2Coding.ttf");
-}
-
 
 
 .turnOver { transform: perspective(2000px) rotateY(-90deg); }
@@ -29,7 +24,7 @@ body { font: 18px/1em "Roboto", "Noto Sans KR"; color:#666; background: #eee; }
   z-index: 1;
   width:         730px;
   height:        450px;
-  background:    #FFF;
+  background: center/cover url("../img/bg.png") no-repeat, white;
   margin:        10% auto 120px;
   border-radius: 105px 10px 10px 10px;
   box-shadow:    3px 3px 5px hsla(0, 0%, 65%, 0.25);
@@ -115,34 +110,6 @@ body { font: 18px/1em "Roboto", "Noto Sans KR"; color:#666; background: #eee; }
   width: 48px;
   display: block;
   margin: auto;
-}
-
-#Background-text {
-  font-family: "D2Coding";
-  font-size: 48px;
-  line-height: 1em;
-  color: #EFEFEF;
-  user-select: none;
-}
-#Background-text .top {
-  position: absolute;
-  top: 0;
-  left: -8px;
-  z-index: -1;
-}
-#Background-text .top:after {
-  content: "";
-  right: 0;
-  top: 0;
-  position: absolute;
-  background: linear-gradient(to right, transparent, #fff);
-  width: 50%;
-  height: 100%;
-}
-#Background-text .bottom {
-  position: absolute;
-  bottom: 0;
-  right: -88px;
 }
 
 footer {
