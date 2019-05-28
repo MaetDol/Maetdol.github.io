@@ -6,11 +6,22 @@ a, p, span, h1, h2, h3, li { color: #555; text-decoration: none; }
 li { list-style: none; }
 
 
+.site-title {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.site-title a {
+  color: white;
+}
 .container {
   width: 100%;
   min-height: 100%;
   background: #FEFCF3;
   border: 12px solid #F99696;
+  border-width: 64px 12px 12px 12px;
   box-shadow: inset 5px 5px 1px hsla(0, 0%, 0%, 0.1);
   position: relative;
 }
@@ -44,6 +55,7 @@ li { list-style: none; }
   height: 540px;
   border: 1px solid black;
   background: white;
+  margin: 56px 0;
 }
 .container section .embed-wrapper embed {
   width: 100%;
