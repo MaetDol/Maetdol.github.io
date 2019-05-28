@@ -1,72 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <title>Kangmin-Lee</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean" rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-  <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
-  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
-</head>
+<script type="text/javascript">
+
+  w = window.innerWidth
+  if( w < 740 ) {
+    window.location = "m/index.html"
+  } else {
+    window.location = "main.html"
+  }
+
+</script>
 <body>
-
-
-  <div id="Card" class="to-right">
-    <section id="AboutMe">
-      <img id="Profile" src="img/frontend.png">
-
-      <div id="Information">
-        <div class="wrapper">
-          <p class="bold">이강민</p>
-          <p>프론트엔드 개발자</p>
-          <p class="light-text">rndka98@naver.com</p>
-        </div>
-      </div>
-    </section>
-
-    <nav id="Category">
-      <h1 class="light-text">Sites</h1>
-      <ul>
-        <li>
-          <a href="Portfolio/index.html">
-            <img src="img/browser.svg" alt="Browser image">
-            <span>프론트엔드</span>
-          </a>
-        </li>
-        <li>
-          <a href="m/index.html">
-            <img src="img/browser.svg" alt="Browser image">
-            <span>(임시) 모바일</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/maetdol">
-            <img class="svg" src="img/github.svg" alt="Github icon">
-            <span>Github</span>
-          </a>
-        </li>
-        <li>
-          <a href="sandbox/index.html">
-            <img src="img/sandbox.png" alt="Sandbox image">
-            <span>JS Sandbox</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-
-  <footer>
-    <span class="Copyright">Copyright 2019 Kangmin, All Rights Reserved.</span>
-    <div class="cc">
-      <img src="img/browser.svg" alt="Browser image">
-      <span>Icon created by <a href="https://thenounproject.com/KimmiStudio/">Kimmi Studio</a> from the <a href="https://thenounproject.com/">Noun Project</a></span>
-    </div>
-  </footer>
 </body>
 </html>
