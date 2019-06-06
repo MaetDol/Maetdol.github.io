@@ -9,24 +9,53 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
   <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
   <h1 class="site-title"><a href="#">JS Sandbox</a></h1>
   <div class="container">
-    <section>
-      <div class="title">
-        <h1>간단한 이미지 슬라이더</h1>
-        <span>2019. 05. 25</span>
-      </div>
 
-      <div class="embed-wrapper">
-        <embed type="text/html" src="../Portfolio/material/index.html">
+    <aside class="tool-box">
+      <div class="scroll-top">
+        <img src="contents/img/scroll-top.png" alt="상단으로가기 아이콘">
       </div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-      <br>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <form class="search" action="" method="get">
+        <input type="text" name="search" placeholder="검색">
+        <button type="submit" name="button"></button>
+      </form>
+    </aside>
 
-    </section>
+    <div class="wrapper">
+      <section>
+        <div class="title">
+          <h1>간단한 이미지 슬라이더</h1>
+          <span>2019. 05. 25</span>
+        </div>
+
+        <div class="embed-wrapper">
+          <embed type="text/html" src="../Portfolio/material/index.html">
+        </div>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <br>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <div class="bottom">
+            <div class="sibling-article-link">
+                <a href="#">
+                    <span class="link-title">다음글</span>
+                    <span class="sibling-title">요소를 드래그, 리사이즈가 가능하게 만들기</span>
+                </a>
+                <a href="#">
+                    <span class="link-title">이전글</span>
+                    <span class="sibling-title">캔버스를 이용해 이미지를 픽셀로 만들기</span>
+                </a>
+            </div>
+        </div>
+      </section>
+
+
+    </div>
 
     <div class="decorate">
       <img src="contents/img/sand bucket.png" alt="배경용 양동이 이미지">

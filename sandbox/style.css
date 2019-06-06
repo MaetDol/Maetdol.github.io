@@ -9,14 +9,15 @@ li { list-style: none; }
 .site-title {
   position: absolute;
   top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
   z-index: 1;
 }
 .site-title a {
   color: white;
 }
 .container {
+  z-index: 0;
   width: 100%;
   min-height: 100%;
   background: #FEFCF3;
@@ -25,25 +26,32 @@ li { list-style: none; }
   box-shadow: inset 5px 5px 1px hsla(0, 0%, 0%, 0.1);
   position: relative;
 }
+.container > .wrapper {
+  display: flex;
+  margin: 48px auto 320px;
+  max-width: 1040px;
+}
+
+
+
+/* Section */
 .container section {
-  width: 100%;
-  max-width: 840px;
   background: #f2f2ee;
-  margin: 16px auto;
-  padding: 88px 32px 320px;
-  border: 1px solid #bfc4dc;
+  padding: 88px 32px;
+  box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);
   position: relative;
   z-index: 1;
 }
 .container section .title {
   width: fit-content;
-  margin-bottom: 88px;
 }
 .container section .title h1 {
   padding: 0 32px 16px 0;
   display: inline-block;
-  border-bottom: 2px solid #E9CD98;
+  border-bottom: 2px solid #ecc273;
   margin-bottom: 8px;
+  line-height: 1.2em;
+  word-break: break-word;
 }
 .container section .title span {
   display: block;
@@ -60,9 +68,127 @@ li { list-style: none; }
 .container section .embed-wrapper embed {
   width: 100%;
   height: 100%;
-  border-top: 24px solid #f5ba67;
+  border-top: 24px solid #ecc273;
+}
+.container section .bottom {
+    background: white;
+    margin-top: 64px;
+    padding: 16px;
+}
+.container section .bottom .sibling-article-link {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+.container section .bottom .sibling-article-link a {
+    display: inline-block;
+    text-align: right;
+    margin-bottom: 32px;
+}
+.container section .bottom .sibling-article-link a .link-title {
+    display: block;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 8px;
+}
+.container section .bottom .sibling-article-link a .link-title::after {
+    content: "";
+    width: 2.6em;
+    height: 0.6em;
+    background: #cfd7f2;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.container section .bottom .sibling-article-link .sibling-title {
+    position: relative;
+    z-index: 0;
+}
+.container section .bottom .sibling-article-link .sibling-title::after {
+    content: "";
+    width: 0;
+    height: 0.6em;
+    background: #ecc273;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: width .2s ease-out;
+}
+.container section .bottom .sibling-article-link a:hover .sibling-title::after {
+    width: 100%;
 }
 
+
+/* aside */
+.container aside {
+  margin-right: 16px;
+  position: fixed;
+  right: 16px;
+  top: 136px;
+  z-index: 2;
+}
+.container aside > * {
+  box-shadow: 2px 2px 2px hsla(0,0%,0%,0.2);
+}
+.container aside .scroll-top {
+  width: 48px;
+  height: 48px;
+  background: #8196DD;
+  position: relative;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  float: right;
+}
+.container aside .scroll-top img {
+  width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+}
+.container aside .search {
+  height: 48px;
+  background: white;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  clear: right;
+}
+.container aside .search:hover input,
+.container aside .search input:focus {
+  width: 200px;
+  padding-left: 16px;
+}
+.container aside .search input {
+  width: 48px;
+  height: 100%;
+  border: none;
+  outline: none;
+  border-right: 48px solid #E9CD98;
+  transition: width .2s ease-out, padding-left .1s;
+}
+.container aside .search button {
+  position: absolute;
+  height: 70%;
+  right: 8px;
+  top: 57%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 28px;
+  background: url("contents/img/search.png") no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* Decorate */
 .decorate {
   position: absolute;
   padding: 12px;
@@ -70,6 +196,7 @@ li { list-style: none; }
   top: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 .decorate > * {
   z-index: 2;
