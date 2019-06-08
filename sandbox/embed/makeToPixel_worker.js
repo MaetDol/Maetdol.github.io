@@ -1,17 +1,15 @@
 function averageOfPixels( start, colSize, rowSize, Dot ) {
   var rgb = new Dot(),
-  var colorNumber = 0;
-  for(/* 한 줄을 순회하는 코드 */) {
-    for( var r=0; r<rowSize; r++ ) {
-      for( var c=0; c<colSize; c++ ) {
-        var pos = start + c + r*imgWidth;
+      colorNumber = 0;
+  for( var r=0; r<rowSize; r++ ) {
+    for( var c=0; c<colSize; c++ ) {
+      var pos = start + c + r*imgWidth;
 
-        rgb.r += imgPixels[pos];
-        rgb.g += imgPixels[pos+1];
-        rgb.b += imgPixels[pos+2];
+      rgb.r += imgPixels[pos];
+      rgb.g += imgPixels[pos+1];
+      rgb.b += imgPixels[pos+2];
 
-        colorNumber++;
-      }
+      colorNumber++;
     }
   }
 
@@ -19,7 +17,7 @@ function averageOfPixels( start, colSize, rowSize, Dot ) {
   rgb.g = rgb.g / colorNumber;
   rgb.b = rgb.b / colorNumber;
 
-  //return [rgb.r, rgb.g, rgb.b];
+  return [rgb.r, rgb.g, rgb.b];
   // 한 줄을 배열로 만드는 코드
 }
 
