@@ -54,7 +54,7 @@ $(document).ready( function () {
         touchmove:
         function (e) {
             let pointX = e.originalEvent.touches[0].screenX;
-            dragDistance = startPoint - pointX;
+            dragDistance = pointX - startPoint;
             setFocus(o, dragDistance);
         },
         touchend:
@@ -64,7 +64,7 @@ $(document).ready( function () {
             if( Math.abs(dragDistance) > o.getWidth()*0.3 ) {
 
                 o.direction = 'left';
-                if( dragDistance > 0 ) {
+                if( dragDistance < 0 ) {
                     o.direction = 'right';
                 }
                 dragDistance = 0;
@@ -91,9 +91,9 @@ function setFocus(o, offset) {
         offset = 0;
     }
     let margin = parseInt( o.list.eq(0).css('margin-right') );
-    offset += o.idx * (o.getWidth() + margin);
+    offset += -o.idx * (o.getWidth() + margin);
 
     $('.focus').removeClass('focus');
-    o.view.css({ left: 'calc(50% - ' + offset + 'px)' })
+    o.view.css({ transform: 'translateX(calc(' + offset + 'px - 188px) )' })
     o.list.eq(o.idx).addClass('focus');
 }

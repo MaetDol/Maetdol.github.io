@@ -21,7 +21,7 @@ main > ul {
     transform: translateX(-188px);
     left: 50%;
     position: relative;
-    transition: left .2s ease-in-out;
+    transition: transform .2s ease-in-out;
 }
 main > ul::after {
     content: "";
