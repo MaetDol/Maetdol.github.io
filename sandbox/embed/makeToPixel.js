@@ -103,36 +103,19 @@ function generateGrid() {
         halfRowSize = Math.floor( rowSize / 2 );
 
     for( var r=0,i=0; r<grid.height; r++ ) {  // row
-      // 웹 워커를 이용 할 수 있을 경우, 웹 워커를 이용!
-      if( window.Worker ) {
-        var worker = new Worker("makeToPixel_worker.js");
-        worker.postMessage({
-          imgPixels: imgPixels,
-          imgWidth:  img.width,
-          colSize:   colSize,
-          rowSize:   rowSize,
-          start:     r*rowSize*img.width,
-          Dot:       Dot
-        });
-        worker.onmessage = function(e) {
-          // 각 줄을 받고, 하나의 배열로 합치는 코드
-        }
-        // averageOfPixels(rgbPos, colSize, rowSize, Dot)
-      } else {
-        for( var c=0; c<grid.width; c++ ) { // col
-          var p      = new Dot(),
-              // 곱하기 4는 r, g, b, a 값이 일렬로 배열을 이루고 있기 때문에,
-              // 각 픽셀의 'red'값을 기준으로 계산하기 위해 4칸씩 뛴다.
-              // 각 셀의 맨 첫번째( 왼쪽 위 )픽셀 위치
-              rgbPos = ( c*colSize + r*rowSize*img.width ) * 4;
-              // 가운데 위치를 선택하게끔 보정한다
-              // rgbPos += ( halfColSize + halfRowSize*img.width ) * 4;
+      for( var c=0; c<grid.width; c++ ) { // col
+        var p = new Dot(),
+            // 곱하기 4는 r, g, b, a 값이 일렬로 배열을 이루고 있기 때문에,
+            // 각 픽셀의 'red'값을 기준으로 계산하기 위해 4칸씩 뛴다.
+            // 각 셀의 맨 첫번째( 왼쪽 위 )픽셀 위치
+            rgbPos = ( c*colSize + r*rowSize*img.width ) * 4;
+            // 가운데 위치를 선택하게끔 보정한다
+            // rgbPos += ( halfColSize + halfRowSize*img.width ) * 4;
 
-          p.r = imgPixels[rgbPos];
-          p.g = imgPixels[rgbPos+1];
-          p.b = imgPixels[rgbPos+2];
-          grid.pixels[i++] = p;
-        }
+        p.r = imgPixels[rgbPos];
+        p.g = imgPixels[rgbPos+1];
+        p.b = imgPixels[rgbPos+2];
+        grid.pixels[i++] = p;
       }
     }
   }

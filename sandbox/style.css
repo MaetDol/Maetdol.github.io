@@ -37,27 +37,127 @@ li { list-style: none; }
 /* Section */
 .container section {
   background: #f2f2ee;
+  width: 100%;
   padding: 88px 32px;
   box-shadow: 2px 2px 2px hsla(0,0%,0%,0.1);
   position: relative;
   z-index: 1;
 }
-.container section .title {
+.container section > .title {
+  text-align: center;
+}
+.container section > .title span {
+  font-size: 27px;
+}
+.container section > .title span::before,
+.container section > .title span::after {
+  content: "";
+  border-bottom: 2px solid #8196DD;
+  width: 88px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 110%;
+}
+.container section > .title span::before {
+  left: initial;
+  right: 110%;
+}
+.container section > .sub-title {
   width: fit-content;
 }
-.container section .title h1 {
-  padding: 0 32px 16px 0;
+.container section > .title span,
+.container section > .sub-title .title {
+  position: relative;
   display: inline-block;
-  border-bottom: 2px solid #ecc273;
   margin-bottom: 8px;
   line-height: 1.2em;
+  font-size: 27px;
   word-break: break-word;
 }
-.container section .title span {
+.container section > .sub-title .title {
+  padding: 0 32px 16px 0;
+  border-bottom: 2px solid #ecc273;
+}
+.container section > .sub-title .time {
   display: block;
   text-align: right;
   font-size: 16px;
 }
+/* Main page */
+.main .container section > .title {
+  text-align: initial;
+}
+.main .container section > .title span {
+  color: hsla(0,0%,0%,0.45);
+  font-size: 20px;
+}
+.main .container section > .title span::after {
+  border-bottom-width: 3px;
+  width: 100%;
+}
+.main .container section > .title span::before {
+  display: none;
+}
+.container section .link-list li {
+  text-align: center;
+  position: relative;
+  margin: 96px 0;
+}
+.container section .link-list li a {
+  position: relative;
+  display: inline-block;
+}
+.container section .link-list li a::after {
+  content: "";
+  width: 0;
+  height: 1em;
+  background: #ecc273;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: width .2s ease-out;
+}
+.container section .link-list li a:hover::after {
+  width: 100%;
+}
+.container section .link-list li .title {
+  font-size: 27px;
+}
+.container section .link-list li .time {
+  display: block;
+  margin-top: 8px;
+  color: hsla(0,0%,0%,0.4);
+}
+/* Search result page */
+.search .container .tool-box .search input {
+  width: 200px;
+  padding-left: 16px;
+}
+.search .container .link-list {
+  margin-left: 24px;
+}
+.search .container .link-list li {
+  text-align: initial;
+  margin: 56px 0;
+}
+.search .container .sub-title .title {
+  border-bottom: 2px solid #8196DD;
+  width: 200%;
+  margin-top: 64px;
+}
+.search .container .not-found {
+  text-align: center;
+  margin-top: 64px;
+}
+.search .container .not-found span {
+  font-size: 27px;
+  line-height: 1.5em;
+  color: hsla(0,0%,0%,0.3);
+}
+/* Article page */
 .container section .embed-wrapper {
   width: 100%;
   height: 540px;
@@ -111,7 +211,7 @@ li { list-style: none; }
     content: "";
     width: 0;
     height: 0.6em;
-    background: #ecc273;
+    background: #ecc27380;
     display: inline-block;
     position: absolute;
     right: 0;
@@ -124,18 +224,18 @@ li { list-style: none; }
 }
 
 
-/* aside */
-.container aside {
+/* toolbox */
+.container .tool-box {
   margin-right: 16px;
   position: fixed;
   right: 16px;
   top: 136px;
   z-index: 2;
 }
-.container aside > * {
+.container .tool-box > * {
   box-shadow: 2px 2px 2px hsla(0,0%,0%,0.2);
 }
-.container aside .scroll-top {
+.container .tool-box .scroll-top {
   width: 48px;
   height: 48px;
   background: #8196DD;
@@ -145,14 +245,14 @@ li { list-style: none; }
   cursor: pointer;
   float: right;
 }
-.container aside .scroll-top img {
+.container .tool-box .scroll-top img {
   width: 80%;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
   position: absolute;
 }
-.container aside .search {
+.container .tool-box .search {
   height: 48px;
   background: white;
   position: relative;
@@ -160,12 +260,12 @@ li { list-style: none; }
   overflow: hidden;
   clear: right;
 }
-.container aside .search:hover input,
-.container aside .search input:focus {
+.container .tool-box .search:hover input,
+.container .tool-box .search input:focus {
   width: 200px;
   padding-left: 16px;
 }
-.container aside .search input {
+.container .tool-box .search input {
   width: 48px;
   height: 100%;
   border: none;
@@ -173,7 +273,7 @@ li { list-style: none; }
   border-right: 48px solid #E9CD98;
   transition: width .2s ease-out, padding-left .1s;
 }
-.container aside .search button {
+.container .tool-box .search button {
   position: absolute;
   height: 70%;
   right: 8px;
