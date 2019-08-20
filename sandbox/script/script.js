@@ -4,9 +4,22 @@ window.onpageshow = function() {
   scrollTop.addEventListener( 'click', function() {
     window.scrollTo(0, 0)
   })
+
+  mdWrapper = selector('.markdown')
+  let htmlText= parseMarkdown( mdWrapper.textContent )
+  mdWrapper.innerHTML = htmlText
+  console.log(htmlText)
 }
+
+
 
 function selector(s) {
   let e = document.querySelectorAll(s)
   return e.length > 1 ? e : e[0]
+}
+
+function each( e, f ) {
+  for( let i=0; i < e.length; i++ ) {
+    f(e[i], i)
+  }
 }
