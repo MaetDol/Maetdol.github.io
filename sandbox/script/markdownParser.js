@@ -1,15 +1,33 @@
 function parseMarkdown(page) {
 
   let paragraphs = page.split('\n')
-  let tag = []
+  let tag = {}
+  tag.list = []
+  tag.close = _ => {
+    if( tag.list.lastItem() != undefined ) {
+      return '</'+tag.list.pop()+'>'
+    }
+    return ''
+  }
+  tag.open = t => {
+    if( t == tag.list.lastItem() ) {
+      return ''
+    }
+    tag.list.push(t)
+    return '<'+t+'>'
+  }
+  tag.isOpened = t => tag.list.includes(t)
+  tag.current = _ => tag.list.lastItem()
+
   for( let i=0; i < paragraphs.length; i++ ) {
 
     let p = paragraphs[i]
-    if( p == '' || i == paragraphs.length-1 ) {
-      paragraphs[i] = closeTag(tag)
-      continue
-    }
     let parsed = parseParagraph( p, tag )
+    
+    let isLastLine = i == paragraphs.length-1
+    if( isLastLine ) {
+      parsed = parsed + tag.close()
+    }
     paragraphs[i] = parsed.p
   }
   return paragraphs.join('\n')
@@ -24,8 +42,9 @@ function parseMarkdown(page) {
 // (),[]  anchor tag
 function parseParagraph(p, tag) {
   p = p.trim()
-  if( p == '' )
-    return { p:'', tag: tag }
+  if( p == '' ) {
+    return { p: tag.close(), tag: tag }
+  }
 
   let brCount = p.match(/\\+$/)
   if( brCount != null ) {
@@ -33,11 +52,9 @@ function parseParagraph(p, tag) {
     p = p.slice(0, -brCount) + '<br>'.repeat(brCount)
   }
 
-  let prevTag = ''
   switch( p[0] ) {
     case '=':
-
-    p = closeTag(tag) + '\
+    p = tag.close() + '\
         <div class="embed-wrapper">\
           <embed type="text/html" src="/embed/' + p.slice(1) + '/index.html"></embed>\
         </div>\
@@ -45,38 +62,37 @@ function parseParagraph(p, tag) {
     return { p:p, tag: tag }
 
     case '#':
-    let nth = p.match(/^#+/)[0].length,
-        tagLength = '<h1>'.length
-    p = closeTag(tag) + '<h'+nth+'>' + p.slice(nth).trim() + '</h'+nth+'>'
+    let nth = p.match(/^#+/)[0].length
+    p = tag.close() + '<h'+nth+'>' + p.slice(nth).trim() + '</h'+nth+'>'
     break
 
     case '-':
-    prevTag = ''
-    if( isTagOpened('ul', tag) && tag.lastItem() != 'ul' ) {
-      prevTag = closeTag(tag) + closeTag(tag)
-    } else if( isTagOpened('ol', tag) && !isTagOpened('li', tag) ) {
-      prevTag = openTag('li', tag)
+    prevTags = ''
+    if( !tag.isOpened('ol') || tag.isOpened('ul') ) {
+      prevTags = tag.close()
+    } 
+    isOpenedOtherList = tag.isOpened('ul') && (tag.current() == 'ol')
+    if( isOpenedOtherList ) {
+      prevTags += tag.close() + tag.close()
+    } else {
+      prevTags += tag.open('ul')
     }
-    prevTag += openTag( 'ul', tag )
-    p = prevTag + wrapListItem(p)
+    p = prevTags + tag.open('li') + p.replace( /^((\d+\.?)|-)\s*/m, '')
     break
 
     case '0': case '1': case '2': case '3': case '4':
     case '5': case '6': case '7': case '8': case '9':
-    prevTag = ''
-    if( isTagOpened('ol', tag) && tag.lastItem() != 'ol' ) {
-      prevTag = closeTag(tag) + closeTag(tag)
-    } else if( isTagOpened('ul', tag) && !isTagOpened('li', tag) ) {
-      prevTag = openTag('li', tag)
+    prevTags = ''
+    if( !tag.isOpened('ul') || tag.isOpened('ol') ) {
+      prevTags = tag.close()
+    } 
+    isOpenedOtherList = tag.isOpened('ol') && (tag.current() == 'ul')
+    if( isOpenedOtherList ) {
+      prevTags += tag.close() + tag.close()
+    } else {
+      prevTags += tag.open('ol')
     }
-    prevTag += openTag( 'ol', tag )
-    p = prevTag + wrapListItem(p)
-    break
-
-    default:
-      if( !isTagOpened('p', tag) ) {
-        p = openTag( 'p', tag ) + p
-      }
+    p = prevTags + tag.open('li') + p.replace( /^((\d+\.?)|-)\s*/m, '')
   }
 
   // Parse Anchor tag
@@ -96,27 +112,6 @@ function parseParagraph(p, tag) {
 
   p = p.replace(/\\/gm, '')
   return { p:p, tag: tag }
-}
-
-function isTagOpened(target, tag) {
-  return tag.includes(target)
-}
-
-function openTag(target, tag) {
-  if( target == tag.lastItem() ) {
-    return ''
-  }
-  tag.push( target )
-  return '<'+target+'>'
-}
-
-function closeTag( tag ) {
-  return (tag.lastItem() != undefined) ? '</'+tag.pop()+'>' : ''
-}
-
-function wrapListItem(p) {
-  p = p.replace( /^((\d+\.?)|-)\s*/m, '')
-  return '<li>' + p + '</li>'
 }
 
 function wrapAnchor(link, text) {
