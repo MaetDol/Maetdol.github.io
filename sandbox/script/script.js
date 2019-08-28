@@ -6,9 +6,8 @@ window.onpageshow = function() {
   })
 
   mdWrapper = selector('.markdown')
-  let htmlText= parseMarkdown( mdWrapper.textContent )
-  mdWrapper.innerHTML = htmlText
-  console.log(htmlText)
+  let htmlContent= parseMarkdown( mdWrapper.textContent )
+  mdWrapper.innerHTML = htmlContent
 }
 
 

@@ -45,6 +45,7 @@ li { list-style: none; }
 }
 .container section > .title {
   text-align: center;
+  margin-bottom: 64px;
 }
 .container section > .title span {
   font-size: 27px;
@@ -130,6 +131,24 @@ li { list-style: none; }
   display: block;
   margin-top: 8px;
   color: hsla(0,0%,0%,0.4);
+}
+.container section .markdown p,
+.container section .markdown ol,
+.container section .markdown ul {
+  margin-bottom: 1em;
+}
+.container section .markdown h1,
+.container section .markdown h2,
+.container section .markdown h3,
+.container section .markdown h4,
+.container section .markdown h5,
+.container section .markdown h6 {
+  margin: 2em 0 1em 0;
+}
+.container section .markdown li {
+  list-style: inherit;
+  margin-left: 1em;
+  margin-bottom: 0.2em;
 }
 /* Search result page */
 .search .container .tool-box .search input {

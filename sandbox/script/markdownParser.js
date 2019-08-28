@@ -18,18 +18,20 @@ function parseMarkdown(page) {
   }
   tag.isOpened = t => tag.list.includes(t)
   tag.current = _ => tag.list.lastItem()
+  tag.isEmpty = _ => tag.list.length == 0
 
   for( let i=0; i < paragraphs.length; i++ ) {
 
     let p = paragraphs[i]
     let parsed = parseParagraph( p, tag )
     
-    let isLastLine = i == paragraphs.length-1
-    if( isLastLine ) {
-      parsed = parsed + tag.close()
-    }
     paragraphs[i] = parsed.p
   }
+
+  while( !tag.isEmpty ) {
+    paragraphs.push( tag.close() )
+  }
+
   return paragraphs.join('\n')
 }
 
@@ -54,11 +56,10 @@ function parseParagraph(p, tag) {
 
   switch( p[0] ) {
     case '=':
-    p = tag.close() + '\
-        <div class="embed-wrapper">\
-          <embed type="text/html" src="/embed/' + p.slice(1) + '/index.html"></embed>\
-        </div>\
-        '
+    p = tag.close() + 
+        '<div class="embed-wrapper">' +
+          '<embed type="text/html" src="/embed/' + p.slice(1) + 'index.html"></embed>' +
+        '</div>'
     return { p:p, tag: tag }
 
     case '#':
@@ -67,36 +68,28 @@ function parseParagraph(p, tag) {
     break
 
     case '-':
-    prevTags = ''
-    if( !tag.isOpened('ol') || tag.isOpened('ul') ) {
-      prevTags = tag.close()
-    } 
-    isOpenedOtherList = tag.isOpened('ul') && (tag.current() == 'ol')
-    if( isOpenedOtherList ) {
-      prevTags += tag.close() + tag.close()
-    } else {
-      prevTags += tag.open('ul')
-    }
-    p = prevTags + tag.open('li') + p.replace( /^((\d+\.?)|-)\s*/m, '')
+    p = wrapListItem('ul', p, tag)
     break
 
     case '0': case '1': case '2': case '3': case '4':
     case '5': case '6': case '7': case '8': case '9':
-    prevTags = ''
-    if( !tag.isOpened('ul') || tag.isOpened('ol') ) {
-      prevTags = tag.close()
-    } 
-    isOpenedOtherList = tag.isOpened('ol') && (tag.current() == 'ul')
-    if( isOpenedOtherList ) {
-      prevTags += tag.close() + tag.close()
-    } else {
-      prevTags += tag.open('ol')
+    p = wrapListItem('ol', p, tag)
+    break
+
+    default:
+    if( !tag.isOpened('p') ) {
+      p = tag.close() + tag.open('p') + p
     }
-    p = prevTags + tag.open('li') + p.replace( /^((\d+\.?)|-)\s*/m, '')
   }
 
-  // Parse Anchor tag
-  let anchors = p.match( /(\[((\\[\[\]])|[^\[\]])*[^\\]\])|(\([^\(\)]*[^\\]\))/g )
+  p = parseAnchor(p, tag)
+  p = p.replace(/\\/gm, '')
+  return { p:p, tag: tag }
+}
+
+function parseAnchor(p, tag) {
+  const ANCHOR_REGEX = /(\[((\\[\[\]])|[^\[\]])*[^\\]\])|(\([^\(\)]*[^\\]\))/g
+  let anchors = p.match( ANCHOR_REGEX )
   while( anchors != null && anchors.length != 0 ) {
     let link = anchors.shift()
     let text = link
@@ -109,9 +102,25 @@ function parseParagraph(p, tag) {
     let aTag = wrapAnchor(link, text)
     p = p.replace( originText, aTag )
   }
+  return p
+}
 
-  p = p.replace(/\\/gm, '')
-  return { p:p, tag: tag }
+function wrapListItem(listType, p, tag) {
+  let otherType = listType == 'ol' ? 'ul' : 'ol'
+  let prevTags = ''
+  if( !tag.isOpened( otherType ) || tag.isOpened(listType) ) {
+    prevTags = tag.close()
+  }
+
+  let isOpenedOtherList = tag.isOpened(listType) && 
+      (tag.current() == otherType)
+  if( isOpenedOtherList ) {
+    prevTags += tag.close() + tag.close()
+  } else {
+    prevTags += tag.open(listType)
+  }
+
+  return prevTags + tag.open('li') + p.replace( /^((\d+\.?)|-)\s*/m, '')
 }
 
 function wrapAnchor(link, text) {
