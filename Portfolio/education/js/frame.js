@@ -142,13 +142,13 @@ $(function() {
 
     // 창 크기변경에 따른 배너사이즈 변경
     $(window).resize(function () {
-
         if( $(window).width() >= 900 ) {
             setSliderWidth( slideObj );
         } else {
             setSliderWidth( slideObj );
         }
-    })();
+    });
+    $(window).resize();
 
 
 });
@@ -175,8 +175,9 @@ function slide(o, n) {
 }
 
 function setSliderWidth(s) {
-    let imgWidth = s.slider.children('img').width();
-    s.imgWidth = imgWidth;
+    const wrapperWidth = s.slider.parent().width();
+    s.slider.find('img').width( wrapperWidth );
+    s.imgWidth = wrapperWidth;
     let width =  s.imgCnt * s.imgWidth;
     s.slider.css({ width: width + "px" });
 }
